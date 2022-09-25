@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "Bienvenido, selecciona tu peso y altura:...cesar",
+              "Bienvenido, selecciona tu peso y altura:...cesar ",
               style: TextStyle(
                 fontFamily: 'Manrope',
                 fontSize: 16.0,
