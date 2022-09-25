@@ -9,19 +9,42 @@ class _HomePageState extends State<HomePage> {
   double weight = 78;
   double height = 165;
   double ibm = 0;
+  String imagen = "assets/images/image3.png";
+  String estado = "normal";
+  String resumen = "Buen trabajo, Sigue asi";
 
-   CalculateIBM(){
-  ibm = (weight/((height/100)*(height/100)));
+  CalculateIBM() {
+    ibm = (weight / ((height / 100) * (height / 100)));
     print("${ibm}");
 
-
-    setState(() {
-
-    });
-    
+    setState(() {});
   }
-  
-  
+
+  CambiarImagen() {
+    if (ibm <= 18.5) {
+      imagen = "assets/images/image3.png";
+    } else if (ibm >= 18.5 && ibm <= 24.9) {
+      imagen = "assets/images/image1.png";
+    } else {
+      imagen = "assets/images/image2.png";
+    }
+    setState(() {});
+  }
+
+  CambiarEstado() {
+    if (ibm <= 18.5) {
+      estado = "Peso Insuficiente";
+      resumen = "Debes comer mas";
+    } else if (ibm >= 18.5 && ibm <= 24.9) {
+      estado = "Peso Normal";
+      resumen = "sigue asi causa";
+    } else {
+      estado = "Sobrepeso";
+      resumen = "deja el pan!!!";
+    }
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -123,18 +146,16 @@ class _HomePageState extends State<HomePage> {
               width: double.infinity,
               height: 48.0,
               child: ElevatedButton.icon(
-                onPressed: (
-                    ) {
+                onPressed: () {
                   CalculateIBM();
-
+                  CambiarImagen();
+                  CambiarEstado();
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xff2b2d42),
                 ),
                 icon: const Icon(
                   Icons.play_arrow_rounded,
-
-                  
                 ),
                 label: const Text(
                   "Calcular",
@@ -160,19 +181,21 @@ class _HomePageState extends State<HomePage> {
                 color: Color(0xff2b2d42).withOpacity(0.80),
               ),
             ),
-
-
             Center(
-
               child: Image.asset(
-
-
-
-                'assets/images/image3.png',
+                imagen,
                 height: 180,
                 width: 180,
                 fit: BoxFit.contain,
               ),
+
+              /*  child: Image.asset(
+            '${imagen}',
+            height: 180,
+            width: 180,
+            fit: BoxFit.contain,
+
+              ),*/
             ),
             Column(
               children: [
@@ -184,19 +207,22 @@ class _HomePageState extends State<HomePage> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                Text(
-                  "Normal",
+                Center(
+                child: Text(
+                  estado,
                   style: TextStyle(
                     fontSize: 16.0,
                     color: Color(0xff2b2d42).withOpacity(0.90),
                     fontWeight: FontWeight.normal,
                   ),
                 ),
+
+                ),
                 const SizedBox(
                   height: 10.0,
                 ),
                 Text(
-                  "Buen trabajo, sigue comiendo saludable y realiza actividad física.",
+                  resumen,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 14.0,
