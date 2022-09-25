@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:clase2509/bmi_brain.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -12,6 +13,11 @@ class _HomePageState extends State<HomePage> {
   String imagen = "assets/images/image3.png";
   String estado = "normal";
   String resumen = "Buen trabajo, Sigue asi";
+
+
+  BMIBrain mandarina = BMIBrain();
+
+
 
   CalculateIBM() {
     ibm = (weight / ((height / 100) * (height / 100)));
@@ -238,3 +244,5 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+
+
